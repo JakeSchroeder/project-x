@@ -2,46 +2,32 @@ import React, { useRef, useState } from "react";
 import { useGLTF, useHelper } from "@react-three/drei";
 import { BoxHelper } from "three";
 
-export function RecordPlayer({ setCurrentInteractive }: any) {
-
-    const { nodes } = useGLTF("/record_player.gltf");
+export function PC({ setCurrentInteractive }: any) {
+    const { nodes, materials } = useGLTF("/pc-screen.gltf");
     const meshRef = useRef<any>(null);
     const [isHovered, setIsHovered] = useState(false);
 
     useHelper(isHovered && meshRef, BoxHelper, 'green')
 
-    // useFrame(() => {
-
-    //     if (meshRef.current) {
-    //         meshRef.current.material.color.set(isHovered ? 'yellow' : 'gray');
-    //     }
-    // })
-
-
-
     return (
         <mesh
             ref={meshRef}
+            castShadow
+            receiveShadow
             onPointerOver={(e) => {
                 setIsHovered(true)
-                setCurrentInteractive('RECORD_PLAYER');
+                setCurrentInteractive('PC');
             }}
             onPointerLeave={(e) => {
                 setIsHovered(false)
                 setCurrentInteractive('NONE');
             }}
-            castShadow
-            receiveShadow
             //@ts-ignore
-            geometry={nodes.record_player.geometry}
+            geometry={nodes["pc-screen"].geometry}
             //@ts-ignore
-            material={nodes.record_player.material}
-        >
-            {/* <meshLambertMaterial /> */}
-        </mesh>
-    )
-
+            material={nodes["pc-screen"].material}
+        />
+    );
 }
 
-useGLTF.preload("/record_player.gltf");
-
+useGLTF.preload("/pc-screen.gltf");
