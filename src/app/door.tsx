@@ -7,18 +7,18 @@ export function Door({ setCurrentInteractive, currentInteractive }: any) {
     const meshRef = useRef<any>(null);
     const [isHovered, setIsHovered] = useState(false);
 
-    useHelper(isHovered && meshRef, BoxHelper, 'green');
+    useHelper(isHovered && meshRef, BoxHelper, 'red');
 
-    const isInteractivePressed = useKeyboardControls(state => state.interact)
+    // const isInteractivePressed = useKeyboardControls(state => state.interact)
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (isInteractivePressed === true && currentInteractive === 'DOOR') {
-            window.location.href = 'https://google.com';
-        }
+    //     if (isInteractivePressed === true && currentInteractive === 'DOOR') {
+    //         window.location.href = 'https://google.com';
+    //     }
 
-    }, [isInteractivePressed, currentInteractive])
+    // }, [isInteractivePressed, currentInteractive])
 
     return (
 

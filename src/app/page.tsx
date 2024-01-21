@@ -72,7 +72,7 @@ export default function App() {
               { name: 'interact', keys: ["f", "F"] }
             ]}>
             <Canvas frameloop='demand'>
-              {/* <Perf /> */}
+              <Perf />
               <Physics gravity={[0, -30, 0]}>
                 <Base />
                 <Player />
