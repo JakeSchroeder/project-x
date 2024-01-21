@@ -10,15 +10,6 @@ export function RecordPlayer({ setCurrentInteractive }: any) {
 
     useHelper(isHovered && meshRef, BoxHelper, 'green')
 
-    // useFrame(() => {
-
-    //     if (meshRef.current) {
-    //         meshRef.current.material.color.set(isHovered ? 'yellow' : 'gray');
-    //     }
-    // })
-
-
-
     return (
         <mesh
             ref={meshRef}

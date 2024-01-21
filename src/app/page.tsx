@@ -19,6 +19,7 @@ export default function App() {
   const [currentInteractive, setCurrentInteractive] = useState('NONE');
   const [howlSound, setHowlSound] = useState<any>(undefined);
   const [shouldPlaySound, setShouldPlaySound] = useState(true);
+  const [isLocked, setIsLocked] = useState(true);
 
   return (
     <main className='relative bg-black' id="canvas-container">
@@ -57,8 +58,8 @@ export default function App() {
           </div>
           <div className={`absolute left-1/2 -translate-x-1/2 bottom-32 text-white z-10 ${currentInteractive !== 'NONE' ? `opacity-100` : `opacity-0`}`}>
             {currentInteractive === 'RECORD_PLAYER' && `Press 'F' to ${shouldPlaySound ? 'play' : 'pause'} the record player`}
-            {currentInteractive === 'DOOR' && `Press 'F' to exit`}
-            {currentInteractive === 'PC' && `Press 'F' to view the PC`}
+            {currentInteractive === 'DOOR' && (isLocked ? `Door is locked. There's still items to collect.` : `Press 'F' to exit`)}
+            {currentInteractive === 'PC' && `Press 'F' to use the PC`}
           </div>
           <KeyboardControls
 
@@ -80,10 +81,10 @@ export default function App() {
                 <RecordPlayer setCurrentInteractive={setCurrentInteractive} />
               </Physics>
               <pointLight
-                intensity={2}
-                decay={2}
+                intensity={5}
+                decay={3}
                 color="#fffbfc"
-                position={[0, 2.52, 0]}
+                position={[0, 1.52, 0]}
                 rotation={[-Math.PI / 2, 0, 0]}
               />
               {/* <Environment preset='sunset' /> */}
