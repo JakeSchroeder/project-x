@@ -79,14 +79,14 @@ export default function App() {
                 <Door currentInteractive={currentInteractive} setCurrentInteractive={setCurrentInteractive} />
                 <RecordPlayer setCurrentInteractive={setCurrentInteractive} />
               </Physics>
-              {/* <pointLight
-                intensity={8}
+              <pointLight
+                intensity={2}
                 decay={2}
                 color="#fffbfc"
                 position={[0, 2.52, 0]}
                 rotation={[-Math.PI / 2, 0, 0]}
-              /> */}
-              <Environment preset='sunset' />
+              />
+              {/* <Environment preset='sunset' /> */}
               <PointerLockControls />
             </Canvas>
             <SoundManager shouldPlaySound={shouldPlaySound} setShouldPlaySound={setShouldPlaySound} currentInteractive={currentInteractive} howlSound={howlSound} />
