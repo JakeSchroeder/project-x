@@ -6,7 +6,7 @@ import { GLTFLoader } from "three/examples/jsm/Addons.js";
 
 export function Base(props: any) {
 
-    const gltf = useLoader(GLTFLoader, '/base-new.gltf')
+    const gltf = useLoader(GLTFLoader, '/base.gltf')
     return (
         <RigidBody type="fixed" colliders={false}>
             <primitive object={gltf.scene} />

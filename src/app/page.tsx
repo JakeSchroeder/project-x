@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense, useState } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useThree } from '@react-three/fiber'
 import { Base } from './base'
 import { Physics } from '@react-three/rapier';
 import { Environment, KeyboardControls, PointerLockControls } from '@react-three/drei';
@@ -19,7 +19,11 @@ export default function App() {
   const [currentInteractive, setCurrentInteractive] = useState('NONE');
   const [howlSound, setHowlSound] = useState<any>(undefined);
   const [shouldPlaySound, setShouldPlaySound] = useState(true);
-  const [isLocked, setIsLocked] = useState(true);
+  const [isLocked, setIsLocked] = useState(false);
+
+  // const {gl, scene, camera} = useThree();
+
+  // gl.render(scene, camera) = true;
 
   return (
     <main className='relative bg-black' id="canvas-container">
@@ -71,7 +75,8 @@ export default function App() {
               { name: "jump", keys: ["Space"] },
               { name: 'interact', keys: ["f", "F"] }
             ]}>
-            <Canvas frameloop='demand'>
+
+            <Canvas frameloop='always'>
               <Perf />
               <Physics gravity={[0, -30, 0]}>
                 <Base />
@@ -80,16 +85,9 @@ export default function App() {
                 <Door currentInteractive={currentInteractive} setCurrentInteractive={setCurrentInteractive} />
                 <RecordPlayer setCurrentInteractive={setCurrentInteractive} />
               </Physics>
-              <pointLight
-                intensity={5}
-                decay={3}
-                color="#fffbfc"
-                position={[0, 1.52, 0]}
-                rotation={[-Math.PI / 2, 0, 0]}
-              />
-              {/* <Environment preset='sunset' /> */}
               <PointerLockControls />
             </Canvas>
+
             <SoundManager shouldPlaySound={shouldPlaySound} setShouldPlaySound={setShouldPlaySound} currentInteractive={currentInteractive} howlSound={howlSound} />
           </KeyboardControls>
         </Suspense>

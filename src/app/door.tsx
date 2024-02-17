@@ -7,7 +7,7 @@ export function Door({ setCurrentInteractive, currentInteractive }: any) {
     const meshRef = useRef<any>(null);
     const [isHovered, setIsHovered] = useState(false);
 
-    useHelper(isHovered && meshRef, BoxHelper, 'red');
+    useHelper(isHovered && meshRef, BoxHelper, 'green');
 
     // const isInteractivePressed = useKeyboardControls(state => state.interact)
 
